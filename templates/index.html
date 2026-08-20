@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Momo Web Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111827;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+    }
+    #chat {
+      width: 100%;
+      max-width: 600px;
+      background: #1f2933;
+      border-radius: 12px;
+      padding: 16px;
+      box-sizing: border-box;
+      margin-bottom: 12px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    .message {
+      margin: 6px 0;
+      padding: 8px 12px;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+    .user {
+      background: #2563eb;
+      margin-left: auto;
+      text-align: right;
+    }
+    .momo {
+      background: #374151;
+      margin-right: auto;
+      text-align: left;
+    }
+    #controls {
+      display: flex;
+      gap: 8px;
+      max-width: 600px;
+      width: 100%;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+    button {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    #voiceBtn {
+      background: #10b981;
+      color: #111827;
+      font-weight: bold;
+    }
+    #sendBtn {
+      background: #4b5563;
+      color: #e5e7eb;
+    }
+    #status {
+      margin-top: 8px;
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Momo Web</h1>
+  <div class="subtitle">Your chill browser assistant. Say "Momo" in your sentence.</div>
+
+  <div id="chat"></div>
+
+  <div id="controls">
+    <input id="textInput" type="text" placeholder="Type or click 'Talk' and speak..." />
+    <button id="voiceBtn">🎤 Talk</button>
+    <button id="sendBtn">Send</button>
+  </div>
+  <div id="status"></div>
+
+  <script>
+    const chatBox = document.getElementById("chat");
+    const textInput = document.getElementById("textInput");
+    const voiceBtn = document.getElementById("voiceBtn");
+    const sendBtn = document.getElementById("sendBtn");
+    const statusEl = document.getElementById("status");
+
+    // --- Chat display helpers ---
+    function addMessage(text, from = "momo") {
+      const div = document.createElement("div");
+      div.classList.add("message");
+      div.classList.add(from === "user" ? "user" : "momo");
+      div.textContent = text;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function speak(text) {
+      if (!window.speechSynthesis) return;
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.rate = 1.0;
+      speechSynthesis.speak(utter);
+    }
+
+    function handleAction(action) {
+      if (!action) return;
+      if (action === "open_youtube") {
+        window.open("https://www.youtube.com", "_blank");
+      } else if (action === "open_google") {
+        window.open("https://www.google.com", "_blank");
+      } else if (action === "open_github") {
+        window.open("https://github.com", "_blank");
+      }
+    }
+
+    async function sendToMomo(text) {
+      addMessage(text, "user");
+      statusEl.textContent = "Momo is thinking...";
+
+      try {
+        const res = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text }),
+        });
+        const data = await res.json();
+        const reply = data.reply || "Something went wrong.";
+        const action = data.action || null;
+
+        addMessage(reply, "momo");
+        speak(reply);
+        handleAction(action);
+      } catch (err) {
+        console.error(err);
+        addMessage("Error talking to my brain (server).", "momo");
+      } finally {
+        statusEl.textContent = "";
+      }
+    }
+
+    // --- Text input send ---
+    sendBtn.addEventListener("click", () => {
+      const text = textInput.value.trim();
+      if (!text) return;
+      textInput.value = "";
+      sendToMomo(text);
+    });
+
+    textInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        sendBtn.click();
+      }
+    });
+
+    // --- Voice input (Web Speech API) ---
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+
+    if (SpeechRecognition) {
+      recognition = new SpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onstart = () => {
+        statusEl.textContent = "Listening... talk to Momo.";
+      };
+
+      recognition.onend = () => {
+        statusEl.textContent = "";
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Speech error:", event.error);
+        statusEl.textContent = "Voice error: " + event.error;
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        sendToMomo(transcript);
+      };
+
+      voiceBtn.addEventListener("click", () => {
+        if (recognition) {
+          recognition.start();
+        }
+      });
+    } else {
+      statusEl.textContent = "Your browser does not support voice recognition. Use text box.";
+      voiceBtn.disabled = true;
+    }
+
+    // Intro message
+    addMessage("Yo, I’m Momo. Click 'Talk' or type something and include my name in your sentence.");
+  </script>
+</body>
+</html>
