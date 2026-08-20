@@ -9,7 +9,8 @@ app = Flask(__name__)
 
 def handle_intent(query: str):
     """Return Momo's reply text and an optional action for the browser."""
-    query = query.lower()
+    query = query.lower().strip()
+
     reply = "I don't know how to do that yet, but we can pretend I tried."
     action = None
 
@@ -26,14 +27,128 @@ def handle_intent(query: str):
         reply = "I’m just a bunch of code, but emotionally? Thriving."
 
     elif "who are you" in query or "what are you" in query:
-        reply = f"I’m {ASSISTANT_NAME.capitalize()}, your chill web assistant. I exist to make your life 0.01 percent easier."
+        reply = (
+            f"I’m {ASSISTANT_NAME.capitalize()}, Shaileja's portfolio assistant. "
+            "I can tell you about her skills, projects, experience, and work."
+        )
 
-    # ---- TIME ----
+    # ---- DATE & TIME ----
+    elif "date" in query or "what day" in query or "today" in query:
+        today = datetime.datetime.now().strftime("%A, %B %d, %Y")
+        reply = f"Today is {today}."
+
     elif "time" in query:
         now = datetime.datetime.now().strftime("%I:%M %p")
         reply = f"It's {now}. Time is fake, but still."
 
-    # ---- OPEN WEBSITES (via browser actions) ----
+    # ---- ABOUT SHAILEJA ----
+    elif "who is shaileja" in query or "about shaileja" in query:
+        reply = (
+            "Shaileja Kuthuru is an IT Systems Analyst and Data Analyst "
+            "with experience in SQL, Python, Power BI, AWS, business analysis, "
+            "automation, UAT, reporting, and data-driven decision making."
+        )
+
+    elif "experience" in query or "work history" in query:
+        reply = (
+            "Shaileja has worked as an IT Systems Analyst at Ventois, "
+            "a Data Analyst at NeoTech Cloud, and previously completed "
+            "a System Analysis internship at DRDO."
+        )
+
+    # ---- SKILLS ----
+    elif "skills" in query or "technologies" in query or "tech stack" in query:
+        reply = (
+            "Shaileja works with Python, SQL, Power BI, DAX, Power Query, Excel, "
+            "AWS, data analysis, dashboard development, requirements gathering, "
+            "UAT, automation, data validation, and business intelligence."
+        )
+
+    elif "sql" in query:
+        reply = (
+            "Shaileja has used SQL for data analysis, troubleshooting data issues, "
+            "data validation, KPI reporting, dashboard support, and working with "
+            "large datasets containing more than 100,000 records."
+        )
+
+    elif "python" in query:
+        reply = (
+            "Shaileja uses Python for data analysis, automation, validation, "
+            "data preprocessing, reporting workflows, and analytical projects."
+        )
+
+    elif "power bi" in query or "powerbi" in query:
+        reply = (
+            "Shaileja uses Power BI for dashboard development, KPI reporting, "
+            "data visualization, DAX calculations, Power Query transformations, "
+            "and self-service business reporting."
+        )
+
+    elif "aws" in query:
+        reply = (
+            "Shaileja has experience working with AWS services including S3, "
+            "EC2, and RDS as part of analytics, systems, and reporting workflows."
+        )
+
+    # ---- PROJECTS ----
+    elif "projects" in query or "portfolio" in query:
+        reply = (
+            "Shaileja's projects include Customer Behavior Analysis, "
+            "E-Commerce Customer Purchase Behavior Analysis, "
+            "Amazon Sales Dashboard, Pizza Sales SQL Analysis, "
+            "Zomato Data Analysis, and me — Momo."
+        )
+
+    elif "amazon" in query:
+        reply = (
+            "The Amazon Sales Dashboard project uses Power BI, SQL, DAX, "
+            "and Power Query to analyze sales performance across time and categories. "
+            "It includes KPIs such as YTD sales, QTD sales, products sold, "
+            "and customer reviews."
+        )
+
+    elif "customer behavior" in query:
+        reply = (
+            "Shaileja's Customer Behavior Analysis project uses Python, SQL, "
+            "and Power BI to analyze retail transaction data, customer segments, "
+            "purchasing behavior, trends, and business insights."
+        )
+
+    elif "e-commerce" in query or "ecommerce" in query or "rfm" in query:
+        reply = (
+            "The E-Commerce Customer Purchase Behavior Analysis project uses "
+            "Python and SQL for RFM segmentation, churn analysis, monthly sales trends, "
+            "category performance, and customer retention insights."
+        )
+
+    elif "pizza" in query:
+        reply = (
+            "The Pizza Sales project focuses on SQL analysis of sales data "
+            "to identify order patterns, revenue trends, and business performance."
+        )
+
+    elif "zomato" in query:
+        reply = (
+            "The Zomato Data Analysis project explores restaurant-related data "
+            "using analytical techniques to identify trends and useful insights."
+        )
+
+    elif "momo" in query:
+        reply = (
+            "That's me. Momo started as a simple Flask-based assistant and is now "
+            "being upgraded into Shaileja's interactive portfolio assistant."
+        )
+
+    # ---- IMPACT ----
+    elif "impact" in query or "achievements" in query:
+        reply = (
+            "Shaileja has worked with datasets containing more than 100,000 records, "
+            "built Python automation that reduced repetitive manual work, "
+            "developed dashboards for business users, and supported stakeholders "
+            "across operations, finance, and compliance."
+        )
+
+    # ---- OPEN WEBSITES ----
     elif "open youtube" in query:
         reply = "Opening YouTube in a new tab. Don't get lost there."
         action = "open_youtube"
@@ -46,7 +161,7 @@ def handle_intent(query: str):
         reply = "Opening GitHub. Time to pretend we write bug-free code."
         action = "open_github"
 
-    # ---- NOTES (very simple: just pretend for now, or you can store later) ----
+    # ---- MOTIVATION ----
     elif "motivate me" in query or "motivation" in query:
         lines = [
             "You’ve survived every bad day so far. That’s a 100 percent success rate.",
@@ -55,7 +170,8 @@ def handle_intent(query: str):
         ]
         reply = random.choice(lines)
 
-    elif "tell me a joke" in query or "make me laugh" in query:
+    # ---- JOKES ----
+    elif "tell me a joke" in query or "make me laugh" in query or "joke" in query:
         jokes = [
             "Why do programmers prefer dark mode? Because light attracts bugs.",
             "I was going to tell you a UDP joke, but you might not get it.",
@@ -63,8 +179,17 @@ def handle_intent(query: str):
         ]
         reply = random.choice(jokes)
 
+    # ---- GOODBYE ----
     elif any(word in query for word in ["bye", "goodbye", "see you"]):
         reply = "Alright, I’ll go vibe in the cloud. Bye boss."
+
+    # ---- FALLBACK ----
+    else:
+        reply = (
+            "I’m still learning that one. Try asking me about Shaileja's skills, "
+            "experience, SQL, Python, Power BI, AWS, projects, Amazon dashboard, "
+            "customer behavior project, or today's date."
+        )
 
     return {"reply": reply, "action": action}
 
