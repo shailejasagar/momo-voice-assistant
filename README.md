@@ -7,7 +7,11 @@ Momo started as a lightweight Python/Flask assistant and later evolved into an i
 🌐 **Live Portfolio:** https://www.shailejak.com
 
 ---
+## 🖥️ Momo 2.0 Demo
 
+![Momo Voice Portfolio Assistant](assets/momo-demo.png)
+
+Momo provides an interactive way to explore my professional experience, technical skills, projects, education, and certifications through text and voice interaction.
 ## ✨ Features
 
 - 💬 Interactive text-based chat
