@@ -44,39 +44,27 @@
                 var(--bg);
 
             background-size: 50px 50px;
-
             color: var(--text);
-
             min-height: 100vh;
-
             overflow-x: hidden;
         }
 
         body::before {
             content: "";
-
             position: fixed;
-
             width: 420px;
             height: 420px;
-
             border-radius: 50%;
-
             background: rgba(200, 255, 46, 0.08);
-
             filter: blur(120px);
-
             top: -100px;
             right: -100px;
-
             pointer-events: none;
         }
 
         .page {
             max-width: 1500px;
-
             margin: 0 auto;
-
             padding: 24px 40px 50px;
         }
 
@@ -84,20 +72,15 @@
 
         nav {
             display: flex;
-
             justify-content: space-between;
             align-items: center;
-
             height: 70px;
-
             border-bottom: 1px solid var(--border);
         }
 
         .logo {
             font-size: 22px;
-
             font-weight: 800;
-
             letter-spacing: -1px;
         }
 
@@ -107,28 +90,19 @@
 
         .status {
             display: flex;
-
             align-items: center;
-
             gap: 8px;
-
             color: var(--muted);
-
             font-size: 13px;
-
             letter-spacing: 1px;
-
             text-transform: uppercase;
         }
 
         .status-dot {
             width: 8px;
             height: 8px;
-
             background: var(--green);
-
             border-radius: 50%;
-
             box-shadow: 0 0 15px var(--green);
         }
 
@@ -136,37 +110,25 @@
 
         .hero {
             min-height: calc(100vh - 100px);
-
             display: grid;
-
             grid-template-columns: 1.1fr 0.9fr;
-
             align-items: center;
-
             gap: 60px;
-
             padding: 50px 0;
         }
 
         .eyebrow {
             color: var(--green);
-
             font-size: 13px;
-
             letter-spacing: 3px;
-
             text-transform: uppercase;
-
             margin-bottom: 24px;
         }
 
         h1 {
             font-size: clamp(70px, 10vw, 150px);
-
             line-height: 0.8;
-
             letter-spacing: -7px;
-
             text-transform: uppercase;
         }
 
@@ -176,13 +138,9 @@
 
         .intro {
             max-width: 650px;
-
             font-size: 20px;
-
             line-height: 1.7;
-
             color: var(--muted);
-
             margin-top: 32px;
         }
 
@@ -192,27 +150,18 @@
 
         .capabilities {
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 10px;
-
             margin-top: 30px;
         }
 
         .tag {
             border: 1px solid var(--border);
-
             border-radius: 100px;
-
             padding: 10px 15px;
-
             color: #bdbdb7;
-
             font-size: 12px;
-
             letter-spacing: 1px;
-
             text-transform: uppercase;
         }
 
@@ -220,73 +169,52 @@
 
         .visual-area {
             display: flex;
-
             justify-content: center;
             align-items: center;
-
             min-height: 500px;
-
             position: relative;
         }
 
         .orb-wrapper {
             width: 370px;
             height: 370px;
-
             position: relative;
-
             display: flex;
-
             justify-content: center;
             align-items: center;
         }
 
         .orb-ring {
             position: absolute;
-
             inset: 0;
-
             border: 1px solid rgba(200, 255, 46, 0.18);
-
             border-radius: 50%;
-
             animation: rotate 15s linear infinite;
         }
 
         .orb-ring::before {
             content: "";
-
             position: absolute;
-
             width: 12px;
             height: 12px;
-
             border-radius: 50%;
-
             background: var(--green);
-
             top: 35px;
             left: 60px;
-
             box-shadow: 0 0 20px var(--green);
         }
 
         .orb-ring.ring-two {
             inset: 35px;
-
             border-style: dashed;
-
             animation-direction: reverse;
-
             animation-duration: 22s;
         }
 
         .orb {
             width: 230px;
             height: 230px;
-
             border-radius: 50%;
-
             background:
                 radial-gradient(
                     circle at 30% 30%,
@@ -301,9 +229,7 @@
                 #10110d;
 
             border: 1px solid rgba(200, 255, 46, 0.55);
-
             display: flex;
-
             justify-content: center;
             align-items: center;
 
@@ -318,17 +244,13 @@
 
         .orb-text strong {
             display: block;
-
             font-size: 42px;
-
             letter-spacing: -2px;
         }
 
         .orb-text span {
             color: var(--green);
-
             font-size: 11px;
-
             letter-spacing: 3px;
         }
 
@@ -346,37 +268,27 @@
 
         .assistant-section {
             padding: 70px 0;
-
             border-top: 1px solid var(--border);
         }
 
         .section-label {
             color: var(--green);
-
             font-size: 12px;
-
             text-transform: uppercase;
-
             letter-spacing: 3px;
-
             margin-bottom: 14px;
         }
 
         .assistant-section h2 {
             font-size: clamp(45px, 6vw, 90px);
-
             letter-spacing: -4px;
-
             line-height: 0.95;
-
             margin-bottom: 45px;
         }
 
         .chat-layout {
             display: grid;
-
             grid-template-columns: 0.65fr 1.35fr;
-
             gap: 25px;
         }
 
@@ -384,69 +296,47 @@
 
         .info-panel {
             border: 1px solid var(--border);
-
             background: rgba(12, 12, 12, 0.8);
-
             border-radius: 18px;
-
             padding: 30px;
         }
 
         .info-panel h3 {
             font-size: 22px;
-
             margin-bottom: 14px;
         }
 
         .info-panel p {
             color: var(--muted);
-
             line-height: 1.7;
-
             font-size: 14px;
-
             margin-bottom: 25px;
         }
 
         .prompt-title {
             font-size: 11px;
-
             letter-spacing: 2px;
-
             text-transform: uppercase;
-
             color: #6f6f69;
-
             margin-bottom: 12px;
         }
 
         .prompt {
             background: var(--panel-2);
-
             border: 1px solid var(--border);
-
             padding: 14px 15px;
-
             border-radius: 10px;
-
             font-size: 13px;
-
             margin-bottom: 9px;
-
             color: #c4c4bf;
-
             cursor: pointer;
-
             transition: 0.2s;
         }
 
         .prompt:hover {
             color: #050505;
-
             background: var(--green);
-
             border-color: var(--green);
-
             transform: translateX(4px);
         }
 
@@ -454,74 +344,52 @@
 
         .chat-panel {
             border: 1px solid var(--border);
-
             border-radius: 18px;
-
             min-height: 620px;
-
             background: rgba(10, 10, 10, 0.92);
-
             display: flex;
-
             flex-direction: column;
-
             overflow: hidden;
         }
 
         .chat-header {
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
             padding: 18px 22px;
-
             border-bottom: 1px solid var(--border);
         }
 
         .chat-title {
             display: flex;
-
             align-items: center;
-
             gap: 12px;
         }
 
         .mini-orb {
             width: 34px;
             height: 34px;
-
             border: 1px solid var(--green);
-
             border-radius: 50%;
-
             background: rgba(200, 255, 46, 0.1);
-
             box-shadow: 0 0 15px rgba(200, 255, 46, 0.15);
         }
 
         .chat-name {
             font-weight: 700;
-
             font-size: 14px;
         }
 
         .chat-status {
             color: var(--muted);
-
             font-size: 11px;
-
             margin-top: 2px;
         }
 
         .version {
             color: #575751;
-
             font-size: 11px;
-
             text-transform: uppercase;
-
             letter-spacing: 2px;
         }
 
@@ -529,79 +397,55 @@
 
         #messages {
             flex: 1;
-
             padding: 25px;
-
             overflow-y: auto;
-
             display: flex;
-
             flex-direction: column;
-
             gap: 18px;
-
             min-height: 450px;
-
             max-height: 500px;
         }
 
         .message {
             max-width: 78%;
-
             line-height: 1.6;
-
             padding: 14px 17px;
-
             border-radius: 14px;
-
             font-size: 14px;
-
             animation: messageIn 0.25s ease;
         }
 
         @keyframes messageIn {
             from {
                 opacity: 0;
-
                 transform: translateY(8px);
             }
 
             to {
                 opacity: 1;
-
                 transform: translateY(0);
             }
         }
 
         .momo-message {
             align-self: flex-start;
-
             background: var(--panel-2);
-
             border: 1px solid var(--border);
-
             color: #deded8;
-
             border-bottom-left-radius: 3px;
         }
 
         .user-message {
             align-self: flex-end;
-
             background: var(--green);
-
             color: #090909;
-
             font-weight: 500;
-
             border-bottom-right-radius: 3px;
         }
 
         .typing {
             color: var(--muted);
-
             font-size: 13px;
-
             padding-left: 6px;
         }
 
@@ -609,33 +453,21 @@
 
         .chat-input-area {
             display: flex;
-
             gap: 10px;
-
             border-top: 1px solid var(--border);
-
             padding: 18px;
-
             background: #090909;
         }
 
         #userInput {
             flex: 1;
-
             padding: 15px 17px;
-
             border-radius: 12px;
-
             border: 1px solid var(--border);
-
             background: #111;
-
             outline: none;
-
             color: white;
-
             font-size: 14px;
-
             transition: 0.2s;
         }
 
@@ -647,36 +479,27 @@
         #voiceButton,
         #soundButton {
             border: none;
-
             border-radius: 12px;
-
             padding: 0 18px;
-
             cursor: pointer;
-
             font-weight: 700;
-
             transition: 0.2s;
         }
 
         #sendButton {
             background: var(--green);
-
             color: #080808;
         }
 
         #sendButton:hover {
             transform: translateY(-2px);
-
             box-shadow: 0 8px 25px rgba(200, 255, 46, 0.18);
         }
 
         #voiceButton,
         #soundButton {
             background: #151515;
-
             color: white;
-
             border: 1px solid var(--border);
         }
 
@@ -687,9 +510,7 @@
 
         #voiceButton.listening {
             color: var(--green);
-
             border-color: var(--green);
-
             box-shadow: 0 0 16px rgba(200, 255, 46, 0.2);
         }
 
@@ -697,21 +518,13 @@
 
         footer {
             margin-top: 60px;
-
             padding: 30px 0;
-
             border-top: 1px solid var(--border);
-
             display: flex;
-
             justify-content: space-between;
-
             color: #61615c;
-
             font-size: 11px;
-
             text-transform: uppercase;
-
             letter-spacing: 2px;
         }
 
@@ -724,7 +537,6 @@
 
             .hero {
                 grid-template-columns: 1fr;
-
                 padding-top: 80px;
             }
 
@@ -760,13 +572,11 @@
 
             .orb-wrapper {
                 width: 300px;
-
                 height: 300px;
             }
 
             .orb {
                 width: 180px;
-
                 height: 180px;
             }
 
@@ -776,7 +586,6 @@
 
             #userInput {
                 width: 100%;
-
                 flex-basis: 100%;
             }
 
@@ -784,7 +593,6 @@
             #voiceButton,
             #soundButton {
                 height: 46px;
-
                 flex: 1;
             }
 
@@ -794,7 +602,6 @@
 
             footer {
                 flex-direction: column;
-
                 gap: 10px;
             }
         }
@@ -815,7 +622,7 @@
 
             <div class="status">
                 <span class="status-dot"></span>
-                Momo system online
+                Momo 2.0 online
             </div>
 
         </nav>
@@ -839,9 +646,9 @@
                 <p class="intro">
                     I'm
                     <strong>Shaileja's interactive portfolio assistant.</strong>
-                    Ask me about her data projects, SQL experience,
-                    Power BI work, Python automation, AWS,
-                    career experience, or just ask me for a joke.
+                    Ask me about her software and systems experience,
+                    Python, SQL, AWS, analytics projects, DocuMind AI,
+                    education, certifications, or portfolio.
                 </p>
 
                 <div class="capabilities">
@@ -849,8 +656,8 @@
                     <div class="tag">Python</div>
                     <div class="tag">Flask</div>
                     <div class="tag">Voice</div>
-                    <div class="tag">Data</div>
                     <div class="tag">Systems</div>
+                    <div class="tag">Portfolio AI</div>
 
                 </div>
 
@@ -889,7 +696,7 @@
         <section class="assistant-section">
 
             <div class="section-label">
-                Interactive System
+                Interactive Portfolio System
             </div>
 
             <h2>
@@ -908,8 +715,8 @@
 
                     <p>
                         Try one of these questions.
-                        Momo currently uses a lightweight intent system
-                        connected to Shaileja's portfolio information.
+                        Momo uses intent-based processing connected
+                        to Shaileja's portfolio information.
                     </p>
 
                     <div class="prompt-title">
@@ -932,16 +739,16 @@
 
                     <div
                         class="prompt"
-                        onclick="usePrompt('Tell me about the Amazon dashboard')"
+                        onclick="usePrompt('Tell me about DocuMind AI')"
                     >
-                        Tell me about Amazon Dashboard →
+                        Tell me about DocuMind AI →
                     </div>
 
                     <div
                         class="prompt"
-                        onclick="usePrompt('What is her SQL experience?')"
+                        onclick="usePrompt('Tell me about the Amazon dashboard')"
                     >
-                        What is her SQL experience? →
+                        Tell me about Amazon Dashboard →
                     </div>
 
                     <div
@@ -953,9 +760,23 @@
 
                     <div
                         class="prompt"
-                        onclick="usePrompt('What impact has Shaileja made?')"
+                        onclick="usePrompt('What is her education?')"
                     >
-                        What impact has she made? →
+                        What is her education? →
+                    </div>
+
+                    <div
+                        class="prompt"
+                        onclick="usePrompt('What certifications does she have?')"
+                    >
+                        What certifications does she have? →
+                    </div>
+
+                    <div
+                        class="prompt"
+                        onclick="usePrompt('Open her portfolio')"
+                    >
+                        Open her portfolio →
                     </div>
 
                 </div>
@@ -995,8 +816,9 @@
                     <div id="messages">
 
                         <div class="message momo-message">
-                            Yo. I'm Momo. Ask me something about
-                            Shaileja, her experience, skills, or projects.
+                            Yo. I'm Momo 2.0. Ask me about Shaileja's
+                            experience, technical skills, projects,
+                            education, certifications, or portfolio.
                         </div>
 
                     </div>
@@ -1273,24 +1095,11 @@
 
                 if (
                     data.action ===
-                    "open_youtube"
+                    "open_portfolio"
                 ) {
 
                     window.open(
-                        "https://www.youtube.com",
-                        "_blank"
-                    );
-
-                }
-
-
-                if (
-                    data.action ===
-                    "open_google"
-                ) {
-
-                    window.open(
-                        "https://www.google.com",
+                        "https://www.shailejak.com",
                         "_blank"
                     );
 
@@ -1306,6 +1115,43 @@
                         "https://github.com/shailejasagar",
                         "_blank"
                     );
+
+                }
+
+
+                if (
+                    data.action ===
+                    "open_linkedin"
+                ) {
+
+                    window.open(
+                        "https://www.linkedin.com/in/shailejakuthuru123",
+                        "_blank"
+                    );
+
+                }
+
+
+                if (
+                    data.action ===
+                    "open_resume"
+                ) {
+
+                    window.open(
+                        "https://www.shailejak.com/shaileja_Kuthuru_Resume.pdf",
+                        "_blank"
+                    );
+
+                }
+
+
+                if (
+                    data.action ===
+                    "open_email"
+                ) {
+
+                    window.location.href =
+                        "mailto:kuthurushaileja@gmail.com";
 
                 }
 
