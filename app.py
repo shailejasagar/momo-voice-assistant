@@ -13,6 +13,7 @@ PORTFOLIO_DATA = {
     "github": "https://github.com/shailejasagar",
     "linkedin": "https://www.linkedin.com/in/shailejakuthuru123",
     "email": "kuthurushaileja@gmail.com",
+    "resume": "https://www.shailejak.com/Shaileja_Kuthuru_Resume.pdf",
 }
 
 
@@ -30,8 +31,8 @@ def handle_intent(query: str):
 
     reply = (
         "I'm still learning that one. Try asking about Shaileja's "
-        "skills, experience, education, certifications, projects, "
-        "Python, SQL, Power BI, AWS, or portfolio."
+        "software engineering experience, AI projects, RAG, technical skills, "
+        "education, certifications, AWS, Python, SQL, or portfolio."
     )
 
     action = None
@@ -51,20 +52,24 @@ def handle_intent(query: str):
     ):
         reply = random_reply(
             [
-                "Hey! I'm Momo. What would you like to know about Shaileja?",
-                "Yo. Portfolio assistant online. What can I help you explore?",
-                "Hey there. Ask me about Shaileja's projects, experience, or skills.",
+                "Hey! I'm Momo. Ask me about Shaileja's software, AI projects, experience, or technical skills.",
+                "Hey there. I'm Momo, Shaileja's interactive portfolio assistant. What would you like to explore?",
+                "Momo online. Ask me about DocuMind AI, Shaileja's experience, skills, projects, or education.",
             ]
         )
 
     elif "how are you" in query:
-        reply = "I'm just a bunch of code, but emotionally? Thriving."
+        reply = (
+            "Running smoothly and ready to talk software, AI, and "
+            "everything Shaileja has been building."
+        )
 
     elif "who are you" in query or "what are you" in query:
         reply = (
-            "I'm Momo, Shaileja's voice-enabled portfolio assistant. "
-            "I can answer questions about her experience, technical skills, "
-            "projects, education, certifications, and portfolio."
+            "I'm Momo 2.0, Shaileja's voice-enabled portfolio assistant. "
+            "I help visitors explore her software engineering experience, "
+            "Generative AI and RAG projects, technical skills, education, "
+            "certifications, resume, and professional links."
         )
 
     # -------------------------------------------------
@@ -97,12 +102,32 @@ def handle_intent(query: str):
         "who is shaileja" in query
         or "about shaileja" in query
         or "tell me about shaileja" in query
+        or "what does shaileja do" in query
     ):
         reply = (
-            "Shaileja Kuthuru is a software and systems-focused technology "
-            "professional with experience in Python, SQL, AWS, automation, "
-            "data analytics, business intelligence, application troubleshooting, "
-            "and technical problem solving."
+            "Shaileja Kuthuru is a software engineer and technology professional "
+            "with hands-on experience in Python, SQL, AWS, automation, application "
+            "development, and data-driven systems. Her current technical focus "
+            "includes Generative AI, Retrieval-Augmented Generation, semantic "
+            "search, embeddings, local LLM applications, and intelligent software. "
+            "Her projects include DocuMind AI and Momo 2.0."
+        )
+
+    # -------------------------------------------------
+    # CURRENT FOCUS
+    # -------------------------------------------------
+
+    elif (
+        "current focus" in query
+        or "what is she learning" in query
+        or "what is she focused on" in query
+        or "ai focus" in query
+    ):
+        reply = (
+            "Shaileja is currently focused on software engineering and "
+            "AI application development, particularly Generative AI, "
+            "Retrieval-Augmented Generation, semantic retrieval, local LLMs, "
+            "Python applications, cloud technologies, and modern web development."
         )
 
     # -------------------------------------------------
@@ -115,9 +140,40 @@ def handle_intent(query: str):
         or "where has she worked" in query
     ):
         reply = (
-            "Shaileja has worked as an IT Systems Analyst at Ventois, "
-            "a Data Analyst at NeoTech Cloud, and previously completed "
-            "a System Analysis internship at DRDO."
+            "Shaileja's experience includes working as a Software Engineer "
+            "and Analyst at Ventois, a Data Analyst at NeoTech Cloud, and "
+            "a System Analysis Intern at DRDO. Her work has included Python "
+            "and SQL development, automation, application troubleshooting, "
+            "AWS workflows, data analytics, reporting, and technical collaboration."
+        )
+
+    elif "ventois" in query:
+        reply = (
+            "At Ventois, Shaileja worked as a Software Engineer and Analyst. "
+            "She used Python and SQL to support application troubleshooting "
+            "and data-validation workflows, automated recurring analysis and "
+            "reporting tasks, investigated technical issues, supported AWS-based "
+            "workflows, and explored responsible uses of Generative AI for "
+            "code analysis, documentation, debugging, and information retrieval."
+        )
+
+    elif (
+        "neotech" in query
+        or "neo tech" in query
+    ):
+        reply = (
+            "At NeoTech Cloud, Shaileja worked as a Data Analyst using SQL, "
+            "Python, AWS, and Power BI. Her work included e-commerce reporting, "
+            "KPI development, dashboard creation, stakeholder collaboration, "
+            "data-quality investigation, and Python-based reporting automation."
+        )
+
+    elif "drdo" in query:
+        reply = (
+            "During her System Analysis internship at DRDO, Shaileja used "
+            "Python for data preprocessing and analysis, supported data-cleaning "
+            "and validation standards, and investigated recurring dataset-quality "
+            "issues such as missing values and duplicates."
         )
 
     # -------------------------------------------------
@@ -132,10 +188,10 @@ def handle_intent(query: str):
     ):
         reply = (
             "Shaileja earned a Master of Science in Information Technology "
-            "from Clark University and a bachelor's degree in Electronics "
-            "and Communication Engineering from Gurunanak Institute of Technology. "
-            "She is currently pursuing a Doctor of Education in Leadership "
-            "and Artificial Intelligence at Anderson University."
+            "from Clark University with a 3.67 GPA and a bachelor's degree "
+            "in Electronics and Communication Engineering from Gurunanak "
+            "Institute of Technology. She is pursuing a Doctor of Education "
+            "in Leadership and Artificial Intelligence at Anderson University."
         )
 
     # -------------------------------------------------
@@ -148,7 +204,7 @@ def handle_intent(query: str):
         or "credentials" in query
     ):
         reply = (
-            "Shaileja holds the AWS Certified Solutions Architect Associate, "
+            "Shaileja holds the AWS Certified Solutions Architect – Associate, "
             "AWS Certified Cloud Practitioner, and IBM Data Science "
             "Professional Certificate credentials."
         )
@@ -161,66 +217,176 @@ def handle_intent(query: str):
         "skills" in query
         or "technologies" in query
         or "tech stack" in query
+        or "technical skills" in query
     ):
         reply = (
-            "Shaileja works with Python, SQL, MySQL, Power BI, DAX, "
-            "Power Query, AWS, Git, automation, data validation, "
-            "application troubleshooting, analytics, and business intelligence."
+            "Shaileja's technical stack includes Python, SQL, MySQL, JavaScript, "
+            "TypeScript, React, Next.js, Flask, REST APIs, Git, and AWS. "
+            "Her AI skills include Retrieval-Augmented Generation, LLM applications, "
+            "semantic search, embeddings, prompt engineering, Ollama, and local "
+            "LLM inference. She also works with Power BI, DAX, Power Query, "
+            "automation, data transformation, and exploratory data analysis."
         )
+
+    # -------------------------------------------------
+    # AI / GENERATIVE AI
+    # -------------------------------------------------
+
+    elif (
+        "generative ai" in query
+        or "gen ai" in query
+        or "genai" in query
+        or "artificial intelligence" in query
+        or "ai skills" in query
+    ):
+        reply = (
+            "Shaileja's Generative AI work focuses on building practical "
+            "LLM-powered applications. She has hands-on project experience "
+            "with Retrieval-Augmented Generation, semantic embeddings, "
+            "similarity-based retrieval, prompt engineering, local LLM inference, "
+            "source-grounded responses, and conversational AI."
+        )
+
+    elif (
+        "rag" in query
+        or "retrieval augmented generation" in query
+    ):
+        reply = (
+            "Shaileja has hands-on experience implementing Retrieval-Augmented "
+            "Generation through DocuMind AI. The system processes documents, "
+            "creates semantic embeddings, retrieves relevant chunks using "
+            "similarity search, sends grounded context to a local language model, "
+            "and returns answers with filename and page-level citations."
+        )
+
+    elif "embedding" in query or "semantic search" in query:
+        reply = (
+            "Shaileja uses semantic embeddings and similarity-based retrieval "
+            "in DocuMind AI to identify document chunks that are most relevant "
+            "to a user's question before sending that context to the language model."
+        )
+
+    elif (
+        "ollama" in query
+        or "local llm" in query
+        or "gemma" in query
+    ):
+        reply = (
+            "Shaileja has used Ollama for local LLM inference in DocuMind AI, "
+            "allowing the RAG workflow to generate conversational answers locally "
+            "while grounding responses in retrieved document content."
+        )
+
+    # -------------------------------------------------
+    # PROGRAMMING / SOFTWARE
+    # -------------------------------------------------
 
     elif "python" in query:
         reply = (
-            "Shaileja uses Python for automation, data analysis, "
-            "data validation, preprocessing, troubleshooting workflows, "
-            "and application development."
+            "Python is one of Shaileja's primary technologies. She uses it "
+            "for application development, RAG pipelines, automation, data analysis, "
+            "data validation, preprocessing, troubleshooting, and backend development."
         )
 
     elif "sql" in query:
         reply = (
-            "Shaileja uses SQL for data analysis, troubleshooting, "
-            "data validation, KPI reporting, customer analytics, and "
-            "working with datasets containing more than 100,000 records."
+            "Shaileja uses SQL for data analysis, application troubleshooting, "
+            "data validation, KPI reporting, customer analytics, and working "
+            "with large structured datasets."
+        )
+
+    elif (
+        "react" in query
+        or "next.js" in query
+        or "nextjs" in query
+        or "typescript" in query
+    ):
+        reply = (
+            "Shaileja uses React, Next.js, and TypeScript in her portfolio "
+            "development work. Momo 2.0 is integrated into her Next.js portfolio "
+            "to provide an interactive AI-inspired experience for visitors."
+        )
+
+    elif "flask" in query:
+        reply = (
+            "Shaileja uses Flask for lightweight Python backend development. "
+            "Momo's backend uses Flask to process portfolio questions and return "
+            "responses and browser actions through a REST-style chat endpoint."
+        )
+
+    elif (
+        "rest api" in query
+        or "api" in query
+    ):
+        reply = (
+            "Shaileja has experience building and integrating REST-style APIs. "
+            "For example, Momo connects its frontend interaction layer to a "
+            "Python Flask backend through a JSON-based chat endpoint."
         )
 
     elif "power bi" in query or "powerbi" in query:
         reply = (
-            "Shaileja uses Power BI for dashboard development, "
-            "KPI reporting, visualization, DAX calculations, "
-            "and Power Query transformations."
+            "Shaileja uses Power BI for dashboard development, KPI reporting, "
+            "data visualization, DAX calculations, and Power Query transformations."
         )
 
     elif "aws" in query:
         reply = (
-            "Shaileja has experience with AWS services including "
-            "S3, EC2, and RDS across systems, analytics, cloud, "
-            "and reporting workflows."
+            "Shaileja has experience with AWS services including S3, EC2, "
+            "and RDS across cloud, application, analytics, and reporting workflows. "
+            "She also holds both AWS Solutions Architect – Associate and "
+            "AWS Cloud Practitioner certifications."
         )
 
     # -------------------------------------------------
-    # PROJECTS
+    # DOCUMIND AI
     # -------------------------------------------------
 
-    elif "documind" in query or "rag" in query:
+    elif "documind" in query:
         reply = (
-            "DocuMind AI is Shaileja's local multi-document RAG assistant. "
-            "It supports semantic document retrieval, conversational question answering, "
-            "local LLM inference, and source-aware answers with filename "
-            "and page-level citations."
+            "DocuMind AI is Shaileja's multi-document Retrieval-Augmented "
+            "Generation assistant built with Python, Streamlit, and Ollama. "
+            "It processes PDF documents, creates semantic embeddings, performs "
+            "similarity-based retrieval, uses local LLM inference for conversational "
+            "question answering, and produces source-grounded responses with "
+            "filename and page-level citations."
         )
+
+    # -------------------------------------------------
+    # MOMO
+    # -------------------------------------------------
+
+    elif (
+        "momo 2.0" in query
+        or "momo project" in query
+        or "tell me about momo" in query
+    ):
+        reply = (
+            "Momo 2.0 is Shaileja's voice-enabled portfolio assistant. "
+            "It combines a Python and Flask backend with intent-based query "
+            "processing, REST API communication, browser speech recognition, "
+            "speech synthesis, and integration with her React and Next.js portfolio. "
+            "Visitors can use Momo to explore her experience, skills, projects, "
+            "education, certifications, resume, and professional links."
+        )
+
+    # -------------------------------------------------
+    # ANALYTICS PROJECTS
+    # -------------------------------------------------
 
     elif "amazon" in query:
         reply = (
-            "The Amazon Sales Analysis project uses SQL, Power BI, DAX, "
-            "and Power Query to analyze sales performance. It includes "
-            "KPIs such as YTD sales, QTD sales, products sold, "
-            "and customer-review metrics."
+            "Shaileja's Amazon Sales Analysis project uses SQL, Power BI, "
+            "DAX, and Power Query. She built data-transformation and modeling "
+            "workflows along with interactive KPIs for YTD and QTD sales, "
+            "products sold, customer reviews, and product performance."
         )
 
     elif "customer behavior" in query:
         reply = (
-            "The Customer Behavior Analysis project uses Python, SQL, "
-            "and Power BI to analyze transactional retail data, "
-            "customer segments, purchasing patterns, and business trends."
+            "The Customer Behavior Analysis project uses Python, SQL, and "
+            "Power BI to analyze transactional retail data, customer segments, "
+            "purchasing behavior, and business trends."
         )
 
     elif (
@@ -230,37 +396,40 @@ def handle_intent(query: str):
     ):
         reply = (
             "The E-Commerce Customer Purchase Behavior Analysis project "
-            "uses Python, SQL, and MySQL for RFM segmentation, churn patterns, "
-            "monthly sales trends, category performance, and retention analysis."
+            "uses Python, SQL, and MySQL. It applies RFM segmentation and "
+            "analyzes customer recency, sales trends, category performance, "
+            "churn patterns, and retention opportunities."
         )
 
     elif "zomato" in query:
         reply = (
             "The Zomato Data Analysis project uses Python and exploratory "
-            "data analysis to identify restaurant trends, customer preferences, "
-            "and useful business insights."
+            "data analysis to investigate restaurant trends, customer preferences, "
+            "and business patterns."
         )
 
-    elif "momo" in query:
-        reply = (
-            "That's me. Momo started as a Flask-based portfolio assistant "
-            "and later evolved into a React and Next.js assistant integrated "
-            "directly into Shaileja's production portfolio."
-        )
+    # -------------------------------------------------
+    # ALL PROJECTS
+    # -------------------------------------------------
 
     elif (
         "projects" in query
         or "portfolio projects" in query
         or "what has she built" in query
+        or "what did she build" in query
     ):
         reply = (
-            "Shaileja's projects include Momo, DocuMind AI, "
-            "Customer Behavior Analysis, E-Commerce Customer Purchase "
-            "Behavior Analysis, Amazon Sales Analysis, and Zomato Data Analysis."
+            "Shaileja's featured projects include DocuMind AI, a multi-document "
+            "RAG assistant; Momo 2.0, a voice-enabled portfolio assistant; "
+            "Amazon Sales Analysis; Customer Behavior Analysis; "
+            "E-Commerce Customer Purchase Behavior Analysis; and "
+            "Zomato Data Analysis. Her newer projects emphasize software "
+            "engineering and Generative AI while her analytics projects "
+            "demonstrate strong Python, SQL, and business intelligence skills."
         )
 
     # -------------------------------------------------
-    # IMPACT
+    # IMPACT / STRENGTHS
     # -------------------------------------------------
 
     elif (
@@ -269,17 +438,53 @@ def handle_intent(query: str):
         or "achievements" in query
     ):
         reply = (
-            "Shaileja has worked with datasets containing more than "
-            "100,000 records, built Python automation that reduced repetitive "
-            "manual work, developed analytical dashboards, and supported "
-            "technical stakeholders across multiple business functions."
+            "Shaileja has worked with datasets containing more than 100,000 "
+            "records, automated recurring analysis and reporting workflows, "
+            "reduced repetitive manual analysis, developed dashboards and "
+            "data-driven systems, and built AI applications including "
+            "a RAG document assistant and a voice-enabled portfolio assistant."
+        )
+
+    elif (
+        "strength" in query
+        or "strengths" in query
+        or "why hire" in query
+        or "why should we hire" in query
+    ):
+        reply = (
+            "Shaileja combines software development, cloud, data, and emerging "
+            "Generative AI skills. Her background spans Python, SQL, AWS, "
+            "application troubleshooting, automation, analytics, and hands-on "
+            "AI projects, giving her the ability to approach problems from both "
+            "software and data perspectives."
+        )
+
+    # -------------------------------------------------
+    # TARGET ROLES
+    # -------------------------------------------------
+
+    elif (
+        "role" in query
+        or "roles" in query
+        or "opportunities" in query
+        or "looking for" in query
+        or "job" in query
+    ):
+        reply = (
+            "Shaileja is interested in opportunities across software engineering, "
+            "AI application development, Generative AI, cloud engineering, "
+            "and data-driven technology roles where she can continue building "
+            "practical intelligent systems."
         )
 
     # -------------------------------------------------
     # PORTFOLIO ACTIONS
     # -------------------------------------------------
 
-    elif "portfolio" in query or "website" in query:
+    elif (
+        "portfolio" in query
+        or "website" in query
+    ):
         reply = "Opening Shaileja's portfolio."
         action = "open_portfolio"
 
@@ -295,7 +500,7 @@ def handle_intent(query: str):
         "resume" in query
         or "cv" in query
     ):
-        reply = "Opening Shaileja's resume."
+        reply = "Opening Shaileja's updated resume."
         action = "open_resume"
 
     elif (
@@ -347,8 +552,8 @@ def handle_intent(query: str):
         ]
     ):
         reply = (
-            "Alright. I'll go vibe in the cloud. "
-            "Thanks for exploring Shaileja's portfolio."
+            "Thanks for exploring Shaileja's portfolio. "
+            "I'll be here if you want to talk software, AI, or projects again."
         )
 
     return {
@@ -374,7 +579,7 @@ def chat():
     if not user_text:
         return jsonify(
             {
-                "reply": "Say something. I'm listening.",
+                "reply": "Ask me something about Shaileja. I'm listening.",
                 "action": None,
             }
         )
